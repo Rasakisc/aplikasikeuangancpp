@@ -4,9 +4,26 @@
 
 
 using namespace std;
+const string buka = "keuangan.txt";
 
+struct structuang {
+    int uangnya;
+};
+
+void pilihan();
+void keluar();
+void tambahtransaksi();
+
+
+int main() {
+    pilihan();
+
+    return 0;
+}
 
 void tambahtransaksi() {
+
+    
 
     int n;
     cout << "1. Pemasukan" << endl;
@@ -14,13 +31,14 @@ void tambahtransaksi() {
     cout << "Pilih : ";
     cin >> n;
     if(n == 1) {
-        int uang;
+
+        structuang uang;
         cout << "Masukkan Jumlah Uang : ";
-        cin >> uang;
-        ofstream buka;
-        buka.open("keuangan.txt");
-        buka << uang << endl;
-        buka.close();
+        cin >> uang.uangnya;
+        ofstream file(buka,ios::app);
+        file << "Pemasukan : " << uang.uangnya << endl;
+        file.close();
+        pilihan();
 
     } else if(n == 2) {
         cout << "dua";
@@ -52,13 +70,7 @@ void pilihan() {
         keluar();
         break;
         default:
+        cout << "Pilih menu yang ada" << endl;
         pilihan();
     }
-}
-
-
-int main() {
-    pilihan();
-
-    return 0;
 }
