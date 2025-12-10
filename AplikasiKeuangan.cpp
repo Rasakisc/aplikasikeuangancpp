@@ -60,7 +60,7 @@ void keluar() {
 void pilihan() {
  
     int n;
-    cout << "- Aplikasi Catatan Keuangan -" << endl;
+    cout << "Aplikasi Pelacakan Keuangan" << endl;
     cout << "1. Tambah transaksi" << endl;
     cout << "2. Lihat riwayat transaksi" << endl;
     cout << "3. Hitung saldo terakhir" << endl;
