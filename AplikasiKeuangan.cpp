@@ -41,7 +41,13 @@ void tambahtransaksi() {
         pilihan();
 
     } else if(n == 2) {
-        cout << "dua";
+        structuang uang;
+        cout << "Masukkan Jumlah Uang : ";
+        cin >> uang.uangnya;
+        ofstream file(buka,ios::app);
+        file << "Pengeluaran : " << uang.uangnya << endl;
+        file.close();
+        pilihan();
     }
 
 }
