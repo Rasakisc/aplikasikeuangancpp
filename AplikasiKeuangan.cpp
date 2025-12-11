@@ -6,13 +6,15 @@
 using namespace std;
 const string buka = "keuangan.txt";
 
-struct structuang {
-    int uangnya;
+struct catatanuang {
+    int uang;
+    string dekripsi;
 };
 
 void pilihan();
 void keluar();
 void tambahtransaksi();
+void riwayattransaksi();
 
 
 int main() {
@@ -32,24 +34,40 @@ void tambahtransaksi() {
     cin >> n;
     if(n == 1) {
 
-        structuang uang;
+        catatanuang catatanuang;
         cout << "Masukkan Jumlah Uang : ";
-        cin >> uang.uangnya;
+        cin >> catatanuang.uang;
+        cin.ignore();
+        cout << "Dekripsi Transaksi : ";
+        getline(cin, catatanuang.dekripsi);
+        cout << "Transaksi sudah tersimpan ^-^";
+        cout << "\n\n\n";
         ofstream file(buka,ios::app);
-        file << "Pemasukan : " << uang.uangnya << endl;
+        file << "Pemasukan : " << catatanuang.uang << endl;
+        file << "Dekripsi transaksi : " << catatanuang.dekripsi << endl;
         file.close();
         pilihan();
 
     } else if(n == 2) {
-        structuang uang;
+        catatanuang catatanuang;
         cout << "Masukkan Jumlah Uang : ";
-        cin >> uang.uangnya;
+        cin >> catatanuang.uang;
+        cout << "Dekripsi Transaksi : ";
+        cin >> catatanuang.dekripsi;
+        cout << "Transaksi sudah tersimpan ^-^";
+        cout << "\n\n\n";
         ofstream file(buka,ios::app);
-        file << "Pengeluaran : " << uang.uangnya << endl;
+        file << "Pengeluaran : " << catatanuang.uang << endl;
+        file << "Dekripsi transaksi : " << catatanuang.dekripsi << endl;
         file.close();
         pilihan();
     }
 
+}
+
+void riwayattransaksi() {
+    ifstream file(buka);
+    cout << buka;
 }
 
 void keluar() {
@@ -71,6 +89,8 @@ void pilihan() {
     switch(n) {
         case 1: 
         tambahtransaksi();
+        case 2:
+        riwayattransaksi();
         break;
         case 4:
         keluar();
