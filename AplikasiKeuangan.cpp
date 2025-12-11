@@ -18,6 +18,8 @@ void riwayattransaksi();
 
 
 int main() {
+
+    // summon pertama ^-^)
     pilihan();
 
     return 0;
@@ -67,7 +69,16 @@ void tambahtransaksi() {
 
 void riwayattransaksi() {
     ifstream file(buka);
-    cout << buka;
+    string baris;
+    while(getline(file, baris)) {
+
+        
+        cout << baris << endl;
+
+    }
+    file.close();
+    cout << "\n";
+    pilihan();
 }
 
 void keluar() {
@@ -75,28 +86,61 @@ void keluar() {
     cout << "Terima kasih sudah menggunakan aplikasi kami ^-^)" << endl; 
 }
 
+void saldoterakhir() {
+    string baris;
+    ifstream file(buka);
+
+    if(getline(file, baris) && baris.rfind("Pengeluaran : ",0) == 0) {
+
+        string pengeluaran;
+        pengeluaran = baris.substr(14);
+
+        cout << pengeluaran << endl;
+
+
+    }
+
+}
+
 void pilihan() {
  
     int n;
+    bool pilihannya = false;
     cout << "Aplikasi Pelacakan Keuangan" << endl;
     cout << "1. Tambah transaksi" << endl;
     cout << "2. Lihat riwayat transaksi" << endl;
     cout << "3. Hitung saldo terakhir" << endl;
     cout << "4. Keluar" << endl;
     cout << "Pilih menu : ";
-    cin >> n;
+    if(cin >> n) {
+        pilihannya = true;
+    } else {
+        pilihannya = false;
+    }
+
+    if(pilihannya == false) {
+        cout << "Harus menu yang ada bukan huruf" << endl;
+    }
+
 
     switch(n) {
         case 1: 
         tambahtransaksi();
+        break;
         case 2:
         riwayattransaksi();
+        case 3:
+        saldoterakhir();
+        break;
         break;
         case 4:
         keluar();
         break;
         default:
         cout << "Pilih menu yang ada" << endl;
+        cout << "\n";
         pilihan();
+        break;
+        
     }
 }

@@ -8,3 +8,5 @@ Pemasukan : 100000
 Dekripsi transaksi : 
 Pemasukan : 60000
 Dekripsi transaksi : beli ayam
+Pemasukan : 20000
+Dekripsi transaksi : belilah
