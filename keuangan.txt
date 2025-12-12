@@ -1,12 +1,7 @@
-Pengeluaran : 20000
-Dekripsi transaksi : jalan-jalan
-Pengeluaran : 2
-Dekripsi transaksi : 30000
-Pengeluaran : 50000
-Dekripsi transaksi : beli
-Pemasukan : 100000
-Dekripsi transaksi : 
-Pemasukan : 60000
-Dekripsi transaksi : beli ayam
-Pemasukan : 20000
-Dekripsi transaksi : belilah
+
+Pemasukan : 30000
+Dekripsi transaksi : jalan
+Pengeluaran : 2000
+Dekripsi transaksi : parkiran
+Pemasukan : 30000
+Dekripsi Transaksi : gaji

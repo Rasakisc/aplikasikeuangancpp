@@ -30,33 +30,39 @@ void tambahtransaksi() {
     
 
     int n;
+    string coutnya[] = {"Masukkan Jumlah Uang : ","Dekripsi Transaksi : ","Transaksi sudah tersimpan ^-^"}; 
     cout << "1. Pemasukan" << endl;
     cout << "2. Pengeluaran" << endl;
     cout << "Pilih : ";
     cin >> n;
+
+
     if(n == 1) {
 
+        // jika input 1 cuy
         catatanuang catatanuang;
-        cout << "Masukkan Jumlah Uang : ";
+        cout << coutnya[0];
         cin >> catatanuang.uang;
         cin.ignore();
-        cout << "Dekripsi Transaksi : ";
+        cout << coutnya[1];
         getline(cin, catatanuang.dekripsi);
-        cout << "Transaksi sudah tersimpan ^-^";
+        cout << coutnya[2];
         cout << "\n\n\n";
         ofstream file(buka,ios::app);
         file << "Pemasukan : " << catatanuang.uang << endl;
-        file << "Dekripsi transaksi : " << catatanuang.dekripsi << endl;
+        file << coutnya[1] << catatanuang.dekripsi << endl;
         file.close();
         pilihan();
 
     } else if(n == 2) {
+
+        // ketik 2 jika turunkan prabowo
         catatanuang catatanuang;
-        cout << "Masukkan Jumlah Uang : ";
+        cout << coutnya[0];
         cin >> catatanuang.uang;
-        cout << "Dekripsi Transaksi : ";
+        cout << coutnya[1];
         cin >> catatanuang.dekripsi;
-        cout << "Transaksi sudah tersimpan ^-^";
+        cout << coutnya[2];
         cout << "\n\n\n";
         ofstream file(buka,ios::app);
         file << "Pengeluaran : " << catatanuang.uang << endl;
@@ -89,18 +95,34 @@ void keluar() {
 void saldoterakhir() {
     string baris;
     ifstream file(buka);
+    string pemasukan;
+    string pengeluaran;
+    long long totalpemasukan = 0;
+    long long totalpengeluaran = 0;
+    long long saldo = 0;
 
-    if(getline(file, baris) && baris.rfind("Pengeluaran : ",0) == 0) {
-
-        string pengeluaran;
-        pengeluaran = baris.substr(14);
-
-        cout << pengeluaran << endl;
-
+   while (getline(file, baris)) {
+        if(baris.rfind("Pemasukan : ", 0) == 0) {
+            pemasukan = baris.substr(12);
+            totalpemasukan += stoll(pemasukan);
+        }
+        else if (baris.rfind("Pengeluaran : ", 0) == 0) {
+            pengeluaran = baris.substr(14);
+            totalpengeluaran += stoll(pengeluaran);
+        }
 
     }
+    
+    saldo = totalpemasukan - totalpengeluaran;
+    cout << "Saldo sekarang : "<< saldo << endl;
+    cout << "\n" << endl;
+    pilihan();
+    
 
 }
+
+
+
 
 void pilihan() {
  
@@ -129,9 +151,9 @@ void pilihan() {
         break;
         case 2:
         riwayattransaksi();
+        break;
         case 3:
         saldoterakhir();
-        break;
         break;
         case 4:
         keluar();
