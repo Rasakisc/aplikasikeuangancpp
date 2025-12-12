@@ -127,21 +127,20 @@ void saldoterakhir() {
 void pilihan() {
  
     int n;
-    bool pilihannya = false;
+    
     cout << "Aplikasi Pelacakan Keuangan" << endl;
     cout << "1. Tambah transaksi" << endl;
     cout << "2. Lihat riwayat transaksi" << endl;
     cout << "3. Hitung saldo terakhir" << endl;
     cout << "4. Keluar" << endl;
     cout << "Pilih menu : ";
-    if(cin >> n) {
-        pilihannya = true;
-    } else {
-        pilihannya = false;
-    }
+    if(!(cin >> n)) {
 
-    if(pilihannya == false) {
-        cout << "Harus menu yang ada bukan huruf" << endl;
+        cout << "Harus pilih menu yang ada";
+        cin.clear();
+        cin.ignore();
+        pilihan();
+        return;
     }
 
 
